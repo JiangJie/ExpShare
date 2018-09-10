@@ -21,3 +21,25 @@
 3. 将本地的master分支设置为自动追踪远程仓库的master分支，这里master也只是单纯的分支名，没有特殊含义，只是master用的普遍；-u是--set-upstream-to的缩写，意为本地分支追踪远程分支
 4. 增加--allow-unrelated-histories选项是因为本地和远程master没有共同的祖先，无法进行简单的三方合并，必须要显式告诉git做简单的文件合并
 5. 一旦将本地和远程master分支建立上追踪关系，就可以将本地的修改提交到远程仓库了
+
+## 多个remote
+
+通过git remote add可以添加远程仓库，我们可以为一个本地项目添加多个remote，只要名字不一样就行了。
+
+通常应用于：
+
+某个项目被fork出了多份，你想将多个远程仓库合并到自己的本地仓库中。
+
+1. git remote add A urlA
+2. git remote add B urlB
+3. git pull A master
+4. git pull B master
+
+将你的本地分支推送到多个远程仓库，如实现多重备份。
+
+1. git remote add A urlA
+2. git remote add B urlB
+3. git push A master
+4. git push B master
+
+> NOTE: 如果不指定仓库名，将默认提交到master追踪的远程分支去。
